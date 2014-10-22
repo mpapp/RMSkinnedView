@@ -9,21 +9,40 @@
 
 @implementation RMSkinnedView
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		self.patternOffset = NSMakePoint(0, 0);
-		self.cornerRadius = @0;
-		self.roundedBottomLeft = NO;
-		self.roundedBottomRight = NO;
-		self.roundedTopLeft = NO;
-		self.roundedTopRight = NO;
-		self.fixPatternOrigin = NO;
-		self.mouseDownCanMoveWindow = NO;
-		self.dontDrawAsPattern = YES;
+        [self initializeDefaults];
     }
 	return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    
+    if (self)
+    {
+        [self initializeDefaults];
+    }
+    
+    return self;
+}
+
+- (void)initializeDefaults {
+    self.patternOffset = NSMakePoint(0, 0);
+    self.cornerRadius = @0;
+    self.roundedBottomLeft = YES;
+    self.roundedBottomRight = YES;
+    self.roundedTopLeft = NO;
+    self.roundedTopRight = NO;
+    self.fixPatternOrigin = NO;
+    self.dontDrawAsPattern = YES;
+}
+
+- (BOOL)mouseDownCanMoveWindow {
+    return YES;
 }
 
 - (BOOL) shouldDrawColor {
