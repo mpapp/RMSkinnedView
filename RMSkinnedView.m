@@ -128,9 +128,10 @@
 
 	} else {
 		// draw as Image, not as pattern
-		float width = self.backgroundPatternImage.size.width;
-		float height = self.backgroundPatternImage.size.height;
-		NSPoint point = NSMakePoint(ceilf(self.bounds.size.width/2.0-width/2.0), ceilf(self.bounds.size.height/2.0-height/2.0));
+		CGFloat width = self.backgroundPatternImage.size.width;
+		CGFloat height = self.backgroundPatternImage.size.height;
+		NSPoint point = NSMakePoint(ceil(self.bounds.size.width / (CGFloat)2.0 - width / (CGFloat)2.0),
+                                    ceil(self.bounds.size.height / (CGFloat)2.0 - height / (CGFloat)2.0));
 		//[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
 		[self.backgroundPatternImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 	}
