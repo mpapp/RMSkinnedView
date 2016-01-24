@@ -1,0 +1,6 @@
+framework module RMSkinnedView {
+    umbrella header "RMSkinnedViewFramework.h"
+
+    export *
+    module * { export * }
+}
